@@ -10,13 +10,12 @@ class Backer
     end
 
     def backed_projects
-        array = []
-        ProjectBacker.all.map do |project|
-            if project.backer == self
-                array << project.project
+        project_array = []
+        ProjectBacker.all.filter do |info|
+            if info.backer == self
+                project_array << info.project
             end
         end
-        array
-    end
-    
+        project_array
+    end    
 end
